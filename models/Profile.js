@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new Schema({
   prof: {
     type: Schema.Types.ObjectId,
-    ref: 'profs',
+    ref: 'prof',
   },
   email: {
     type: String,

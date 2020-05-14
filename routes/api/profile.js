@@ -12,7 +12,7 @@ const Prof = require('../../models/Prof');
 router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ prof: req.prof.id }).populate(
-      'user',
+      'prof',
 
       ['name', 'avatar']
     );
@@ -98,4 +98,41 @@ router.get('/', async (req, res) => {
   }
 });
 
+//@route Get api/profile/prof/:prof_id
+//@desc get profile by prof id
+// @ acces public
+router.get('/prof/:prof_id', async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      prof: req.params.prof_id,
+    }).populate('prof', ['name', 'avatar']);
+    if (!profile) return res.status(400).json({ msg: 'Profile Not found' });
+
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind == 'ObjectId') {
+      return res.status(400).json({ msg: 'Profile Not Found' });
+    }
+    res.status(500).send('server error');
+  }
+});
+
+//@route delete api/profile
+//@desc delete profile prof& posts
+// @ acces private
+router.delete('/', auth, async (req, res) => {
+  try {
+    //@todo - remove users posts
+    //remove profile
+    await Profile.findOneAndRemove({ prof: req.prof.id });
+    //remove prof
+    await Prof.findOneAndRemove({ _id: req.prof.id });
+
+    res.json({ msg: 'Prof deleted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('server error');
+  }
+});
 module.exports = router;
