@@ -65,7 +65,7 @@ router.post(
 
       if (profile) {
         //update
-        profile = await Profile.findByIdAndUpdate(
+        profile = await Profile.findOneAndUpdate(
           { prof: req.prof.id },
           { $set: profileFields },
           { new: true }
