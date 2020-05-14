@@ -16,6 +16,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/pauth', require('./routes/api/pauth'));
 app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/profs', require('./routes/api/profs'));
 app.use('/api/posts', require('./routes/api/posts'));
 
