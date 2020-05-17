@@ -266,13 +266,13 @@ router.post(
     }
   }
 );
-//@router Post api/posts/comment/:id
+//@router Post api/posts/comment/p/:id
 //@desc comment on a post
 //@ access private
 
 router.post(
-  '/comment/:id',
-  [auth, [check('text', 'Text is required').not().isEmpty()]],
+  '/comment/p/:id',
+  [pauth, [check('text', 'Text is required').not().isEmpty()]],
 
   async (req, res) => {
     const errors = validationResult(req);
@@ -280,17 +280,17 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      const user = await User.findById(req.user.id).select('-password');
+      const prof = await Prof.findById(req.prof.id).select('-password');
       const post = await Post.findById(req.params.id);
       const newComment = {
         text: req.body.text,
-        name: user.name,
-        avatar: user.avatar,
-        user: req.user.id,
+        name: prof.name,
+        avatar: prof.avatar,
+        prof: req.prof.id,
       };
-      post.comments.unshift(newComment);
+      post.commentsprof.unshift(newComment);
       await post.save();
-      res.json(post.comments);
+      res.json(post.commentsprof);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('server error');
@@ -332,4 +332,37 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
   }
 });
 
+//@router delete api/posts/comment/p/:id/:comment_id
+//@desc delete comment
+//@ access private
+
+router.delete('/comment/p/:id/:comment_id', pauth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    // pull out comment
+    const comment = post.commentsprof.find(
+      (comment) => comment.id === req.params.comment_id
+    );
+
+    //make sure comment exists
+    if (!comment) {
+      return res.status(404).json({ msg: 'Comment does not exist' });
+    }
+    // Check user
+    if (comment.prof.toString() !== req.prof.id) {
+      return res.status(404).json({ msg: 'yser not authorized' });
+    }
+    // get remove index
+    const removeIndex = post.commentsprof
+      .map((comment) => comment.prof.toString())
+      .indexOf(req.prof.id);
+    post.commentsprof.splice(removeIndex, 1);
+    await post.save();
+    res.json(post.commentsprof);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('server error');
+  }
+});
 module.exports = router;
