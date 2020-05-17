@@ -16,7 +16,13 @@ const User = require('../../models/User');
 
 router.post(
   '/',
-  [pauth, [check('text', 'Text is required').not().isEmpty()]],
+  [
+    pauth,
+    [
+      check('text', 'Text is required').not().isEmpty(),
+      check('classes', 'Class is required').not().isEmpty(),
+    ],
+  ],
 
   async (req, res) => {
     const errors = validationResult(req);
@@ -27,6 +33,7 @@ router.post(
       const prof = await Prof.findById(req.prof.id).select('-password');
       const newPost = new Post({
         text: req.body.text,
+        classes: req.body.classes,
         name: prof.name,
         avatar: prof.avatar,
         prof: req.prof.id,
@@ -154,6 +161,28 @@ router.put('/like/:id', auth, async (req, res) => {
     res.status(500).send('server error');
   }
 });
+//@router put  api/posts/like/:id
+//@desc like a post
+//@ access private
+router.put('/like/p/:id', pauth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (
+      post.likesporf.filter((like) => like.prof.toString() === req.prof.id)
+        .length > 0
+    ) {
+      return res.status(400).json({ msg: 'Post already liked' });
+    }
+    post.likesporf.unshift({ prof: req.prof.id });
+
+    await post.save();
+    res.json(post.likesporf);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('server error');
+  }
+});
 //@router put  api/posts/unlike/:id
 //@desc like a post
 //@ access private
@@ -174,6 +203,32 @@ router.put('/unlike/:id', auth, async (req, res) => {
     post.likes.splice(removeIndex, 1);
     await post.save();
     res.json(post.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('server error');
+  }
+});
+
+//@router put  api/posts/unlike/:id
+//@desc like a post
+//@ access private
+router.put('/unlike/p/:id', pauth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (
+      post.likesporf.filter((like) => like.prof.toString() === req.prof.id)
+        .length === 0
+    ) {
+      return res.status(400).json({ msg: 'Post has not yet been liked' });
+    }
+    // get remove index
+    const removeIndex = post.likesporf
+      .map((like) => like.prof.toString())
+      .indexOf(req.prof.id);
+    post.likesporf.splice(removeIndex, 1);
+    await post.save();
+    res.json(post.likesporf);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('server error');

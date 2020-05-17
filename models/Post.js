@@ -9,6 +9,10 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
+  classes: {
+    type: String,
+    required: true,
+  },
   document: {
     type: String,
   },
@@ -25,9 +29,37 @@ const PostSchema = new Schema({
       },
     },
   ],
+  likesporf: [
+    {
+      prof: {
+        type: Schema.Types.ObjectId,
+      },
+    },
+  ],
   comments: [
     {
       user: {
+        type: Schema.Types.ObjectId,
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+      },
+      avatar: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+  commentsprof: [
+    {
+      prof: {
         type: Schema.Types.ObjectId,
       },
       text: {
