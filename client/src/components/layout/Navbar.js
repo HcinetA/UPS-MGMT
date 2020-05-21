@@ -19,13 +19,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
-        <a href='profiles.html'>Professeurs</a>
+        <a href='#!'>Professeurs</a>
       </li>
       <li>
-        <Link to='register'>Register</Link>
+        <Link to='register'>Register Étudiant </Link>
       </li>
       <li>
-        <Link to='login'>Login</Link>
+        <Link to='registerprof'>Register Professeurs</Link>
       </li>
     </ul>
   );

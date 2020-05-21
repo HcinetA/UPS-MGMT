@@ -12,7 +12,7 @@ const Landing = () => {
             <Link to='login' className='btn btn-primary'>
               Loign Etudiants
             </Link>
-            <Link to='login' className='btn btn-light'>
+            <Link to='loginprof' className='btn btn-light'>
               Login Professeurs
             </Link>
           </div>
