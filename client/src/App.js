@@ -9,7 +9,8 @@ import RegisterProf from './components/auth/RegisterProf';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
-
+import Pdashboard from './components/pdashboard/Pdashboard';
+import PrivateRouteP from './components/routing/PrivateRouteP';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -46,6 +47,7 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/registerprof' component={RegisterProf} />
               <Route exact path='/loginprof' component={LoginProf} />
+              <PrivateRouteP exact path='/pdashboard' component={Pdashboard} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
           </section>

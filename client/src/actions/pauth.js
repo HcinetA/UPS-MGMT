@@ -8,6 +8,7 @@ import {
   LOGINPROF_SUCCESS,
   LOGINPROF_FAIL,
   LOGOUTPROF,
+  CLEAR_PROFPROFILE,
 } from './types';
 import setPauthToken from '../utils/setPauthToken';
 //Load Prof
@@ -88,4 +89,5 @@ export const loginProf = (SN, password) => async (dispatch) => {
 
 export const logoutProf = () => (dispatch) => {
   dispatch({ type: LOGOUTPROF });
+  dispatch({ type: CLEAR_PROFPROFILE });
 };

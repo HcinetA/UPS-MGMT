@@ -16,13 +16,20 @@ const Navbar = ({
         <a onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />
           {''}
-          <span className='hide-sm'>Logout</span>
+          <span className='hide-sm'> Logout</span>
         </a>
       </li>
     </ul>
   );
   const pauthLinks = (
     <ul>
+      <li>
+        <Link to='/pdashboard'>
+          <i className='fas fa-user' />
+
+          <span className='hide-sm'> Dashboard</span>
+        </Link>
+      </li>
       <li>
         <a onClick={logoutProf} href='#!'>
           <i className='fas fa-sign-out-alt' />

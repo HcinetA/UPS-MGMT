@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Landing = () => {
+const Landing = ({ pisAuthenticated }) => {
+  if (pisAuthenticated) {
+    return <Redirect to='/pdashboard' />;
+  }
   return (
     <section className='landing'>
       <div className='dark-overlay'>
@@ -21,5 +26,10 @@ const Landing = () => {
     </section>
   );
 };
-
-export default Landing;
+Landing.propTypes = {
+  pisAuthenticated: PropTypes.bool,
+};
+const mapStateToProps = (state) => ({
+  pisAuthenticated: state.pauth.pisAuthenticated,
+});
+export default connect(mapStateToProps)(Landing);
