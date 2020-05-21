@@ -3,11 +3,28 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+import { logoutProf } from '../../actions/pauth';
+const Navbar = ({
+  auth: { isAuthenticated, loading },
+  logout,
+  pauth: { pisAuthenticated, ploading },
+  logoutProf,
+}) => {
   const authLinks = (
     <ul>
       <li>
         <a onClick={logout} href='#!'>
+          <i className='fas fa-sign-out-alt' />
+          {''}
+          <span className='hide-sm'>Logout</span>
+        </a>
+      </li>
+    </ul>
+  );
+  const pauthLinks = (
+    <ul>
+      <li>
+        <a onClick={logoutProf} href='#!'>
           <i className='fas fa-sign-out-alt' />
           {''}
           <span className='hide-sm'>Logout</span>
@@ -36,8 +53,15 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <i className='fas fa-university'></i> Intranet Ups
         </Link>
       </h1>
-      {!loading && (
-        <Fragment> {isAuthenticated ? authLinks : guestLinks}</Fragment>
+      {!loading && !ploading && (
+        <Fragment>
+          {' '}
+          {isAuthenticated
+            ? authLinks
+            : pisAuthenticated
+            ? pauthLinks
+            : guestLinks}
+        </Fragment>
       )}
     </nav>
   );
@@ -45,9 +69,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
+  logoutProf: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  pauth: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  pauth: state.pauth,
 });
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout, logoutProf })(Navbar);

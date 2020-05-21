@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { registerProf } from '../../actions/pauth';
 import PropTypes from 'prop-types';
 
-const RegisterProf = ({ setAlert, registerProf }) => {
+const RegisterProf = ({ setAlert, registerProf, pisAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     SN: '',
@@ -27,6 +27,9 @@ const RegisterProf = ({ setAlert, registerProf }) => {
       });
     }
   };
+  if (pisAuthenticated) {
+    return <Redirect to='/pdashboard' />;
+  }
   return (
     <Fragment>
       {' '}
@@ -88,5 +91,11 @@ const RegisterProf = ({ setAlert, registerProf }) => {
 RegisterProf.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registerProf: PropTypes.func.isRequired,
+  pisAuthenticated: PropTypes.bool,
 };
-export default connect(null, { setAlert, registerProf })(RegisterProf);
+const mapStateToProps = (state) => ({
+  pisAuthenticated: state.pauth.pisAuthenticated,
+});
+export default connect(mapStateToProps, { setAlert, registerProf })(
+  RegisterProf
+);

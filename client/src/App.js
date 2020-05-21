@@ -14,16 +14,23 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
+import { loadProf } from './actions/pauth';
+
 import './App.css';
 import setAuthToken from './utils/setAuthToken';
+import setPauthToken from './utils/setPauthToken';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
+}
+if (localStorage.token) {
+  setPauthToken(localStorage.token);
 }
 
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
+    store.dispatch(loadProf());
   }, []);
 
   return (

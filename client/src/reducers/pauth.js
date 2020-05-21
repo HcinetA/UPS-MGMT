@@ -1,9 +1,17 @@
-import { REGISTERPROF_SUCCESS, REGISTERPROF_FAIL } from '../actions/types';
+import {
+  REGISTERPROF_SUCCESS,
+  REGISTERPROF_FAIL,
+  PROF_LOADED,
+  PAUTH_ERROR,
+  LOGINPROF_FAIL,
+  LOGINPROF_SUCCESS,
+  LOGOUTPROF,
+} from '../actions/types';
 
 const initialState1 = {
   token: localStorage.getItem('token'),
-  isAuthenticated: null,
-  loading: true,
+  pisAuthenticated: null,
+  ploading: true,
   prof: null,
 };
 
@@ -11,21 +19,32 @@ export default function (state = initialState1, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case PROF_LOADED:
+      return {
+        ...state,
+        pisAuthenticated: true,
+        ploading: false,
+        prof: payload,
+      };
     case REGISTERPROF_SUCCESS:
+    case LOGINPROF_SUCCESS:
       localStorage.setItem('token', payload.token);
       return {
         ...state,
         ...payload,
-        isAuthenticated: true,
-        loading: false,
+        pisAuthenticated: true,
+        ploading: false,
       };
     case REGISTERPROF_FAIL:
+    case PAUTH_ERROR:
+    case LOGINPROF_FAIL:
+    case LOGOUTPROF:
       localStorage.removeItem('token');
       return {
         ...state,
         token: null,
-        isAuthenticated: false,
-        loading: false,
+        pisAuthenticated: false,
+        ploading: false,
       };
 
     default:

@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
-const LoginProf = () => {
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { loginProf } from '../../actions/pauth';
+const LoginProf = ({ loginProf, pisAuthenticated }) => {
   const [formData, setFormData] = useState({
     SN: '',
     password: '',
@@ -11,8 +14,12 @@ const LoginProf = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('SUCCESS');
+    loginProf(SN, password);
   };
+  // redirect if logged in
+  if (pisAuthenticated) {
+    return <Redirect to='/pdashboard' />;
+  }
   return (
     <Fragment>
       {' '}
@@ -51,4 +58,11 @@ const LoginProf = () => {
   );
 };
 
-export default LoginProf;
+LoginProf.propTypes = {
+  loginProf: PropTypes.func.isRequired,
+  pisAuthenticated: PropTypes.bool,
+};
+const mapStateToProps = (state) => ({
+  pisAuthenticated: state.pauth.pisAuthenticated,
+});
+export default connect(mapStateToProps, { loginProf })(LoginProf);
