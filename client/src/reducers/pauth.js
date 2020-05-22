@@ -6,6 +6,7 @@ import {
   LOGINPROF_FAIL,
   LOGINPROF_SUCCESS,
   LOGOUTPROF,
+  PROFACCOUNT_DELETED,
 } from '../actions/types';
 
 const initialState1 = {
@@ -39,6 +40,7 @@ export default function (state = initialState1, action) {
     case PAUTH_ERROR:
     case LOGINPROF_FAIL:
     case LOGOUTPROF:
+    case PROFACCOUNT_DELETED:
       localStorage.removeItem('token');
       return {
         ...state,

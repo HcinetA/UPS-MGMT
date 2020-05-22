@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { getCurentProfProfile } from '../../actions/profprofile';
-
+import {
+  getCurentProfProfile,
+  deleteProfAccount,
+} from '../../actions/profprofile';
+import PDashboardActions from './PDashboardActions';
 const Pdashboard = ({
   getCurentProfProfile,
+  deleteProfAccount,
   pauth: { prof },
   profprofile: { profprofile, ploading },
 }) => {
@@ -22,7 +26,19 @@ const Pdashboard = ({
         <i className='fas fa-user'></i> Bienvenue {prof && prof.name}
       </p>
       {profprofile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <PDashboardActions />
+          <div className='my-2'>
+            <button
+              className='btn btn-danger'
+              onClick={() => deleteProfAccount()}
+            >
+              <i className className='fas fa-user-minus'>
+                Delete My Account
+              </i>
+            </button>
+          </div>
+        </Fragment>
       ) : (
         <Fragment>
           <p>
@@ -42,10 +58,14 @@ Pdashboard.propTypes = {
   getCurentProfProfile: PropTypes.func.isRequired,
   pauth: PropTypes.object.isRequired,
   profprofile: PropTypes.object.isRequired,
+  deleteProfAccount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   pauth: state.pauth,
   profprofile: state.profprofile,
 });
-export default connect(mapStateToProps, { getCurentProfProfile })(Pdashboard);
+export default connect(mapStateToProps, {
+  getCurentProfProfile,
+  deleteProfAccount,
+})(Pdashboard);
