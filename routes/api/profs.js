@@ -41,7 +41,6 @@ router.post(
       const avatar = gravatar.url(SN, {
         s: '200',
         r: 'pg',
-        d: 'm',
       });
 
       prof = new Prof({

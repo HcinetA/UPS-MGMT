@@ -2,6 +2,7 @@ import {
   GET_PROFPROFILE,
   PROFPROFILE_ERROR,
   CLEAR_PROFPROFILE,
+  GET_PROFPROFILES,
 } from '../actions/types';
 
 const pinitialState = {
@@ -19,6 +20,12 @@ export default function (state = pinitialState, action) {
       return {
         ...state,
         profprofile: payload,
+        ploading: false,
+      };
+    case GET_PROFPROFILES:
+      return {
+        ...state,
+        profprofiles: payload,
         ploading: false,
       };
     case PROFPROFILE_ERROR:

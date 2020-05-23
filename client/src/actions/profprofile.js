@@ -5,6 +5,8 @@ import {
   PROFPROFILE_ERROR,
   CLEAR_PROFPROFILE,
   PROFACCOUNT_DELETED,
+  GET_PROFPROFILES,
+  CLEAR_PROFILE,
 } from './types';
 
 // get curent profs profile
@@ -12,6 +14,45 @@ import {
 export const getCurentProfProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile/me');
+
+    dispatch({
+      type: GET_PROFPROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFPROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+//get all prof profiles
+
+export const getProfProfiles = () => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFPROFILE });
+  dispatch({ type: CLEAR_PROFILE });
+
+  try {
+    const res = await axios.get('/api/profile');
+
+    dispatch({
+      type: GET_PROFPROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFPROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+//get all prof profile by id
+
+export const getProfProfileById = (profId) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/profile/prof/${profId}`);
 
     dispatch({
       type: GET_PROFPROFILE,

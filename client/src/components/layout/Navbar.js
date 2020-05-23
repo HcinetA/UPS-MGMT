@@ -13,6 +13,9 @@ const Navbar = ({
   const authLinks = (
     <ul>
       <li>
+        <Link to='/profiles'>Professeurs</Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />
 
@@ -30,6 +33,9 @@ const Navbar = ({
   );
   const pauthLinks = (
     <ul>
+      <li>
+        <Link to='/profiles'>Professeurs</Link>
+      </li>
       <li>
         <Link to='/pdashboard'>
           <i className='fas fa-user' />
@@ -50,8 +56,9 @@ const Navbar = ({
   const guestLinks = (
     <ul>
       <li>
-        <a href='#!'>Professeurs</a>
+        <Link to='/profiles'>Professeurs</Link>
       </li>
+
       <li>
         <Link to='register'>Register Étudiant </Link>
       </li>

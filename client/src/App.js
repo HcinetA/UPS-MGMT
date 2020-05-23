@@ -14,6 +14,7 @@ import CreateProfProfile from './components/prof-profile-forms/CreateProfProfile
 import EditProfProfile from './components/prof-profile-forms/EditProfProfile';
 import PrivateRouteP from './components/routing/PrivateRouteP';
 import CreateProfile from './components/profile-forms/CreateProfile';
+import Profiles from './components/profiles/Profiles';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -52,6 +53,8 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/registerprof' component={RegisterProf} />
               <Route exact path='/loginprof' component={LoginProf} />
+              <Route exact path='/profiles' component={Profiles} />
+
               <PrivateRouteP exact path='/pdashboard' component={Pdashboard} />
               <PrivateRouteP
                 exact

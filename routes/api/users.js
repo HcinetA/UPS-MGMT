@@ -42,7 +42,6 @@ router.post(
       const avatar = gravatar.url(NI, {
         s: '200',
         r: 'pg',
-        d: 'm',
       });
 
       user = new User({
