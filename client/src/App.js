@@ -13,6 +13,8 @@ import Pdashboard from './components/pdashboard/Pdashboard';
 import CreateProfProfile from './components/prof-profile-forms/CreateProfProfile';
 import EditProfProfile from './components/prof-profile-forms/EditProfProfile';
 import PrivateRouteP from './components/routing/PrivateRouteP';
+import CreateProfile from './components/profile-forms/CreateProfile';
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -22,6 +24,7 @@ import { loadProf } from './actions/pauth';
 import './App.css';
 import setAuthToken from './utils/setAuthToken';
 import setPauthToken from './utils/setPauthToken';
+import EditProfile from './components/profile-forms/EditProfile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -61,6 +64,16 @@ const App = () => {
                 component={EditProfProfile}
               />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/create-profile'
+                component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-profile'
+                component={EditProfile}
+              />
             </Switch>
           </section>
         </Fragment>

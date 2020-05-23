@@ -60,7 +60,7 @@ export const createprofprofile = (formData, history, edit = false) => async (
 export const deleteProfAccount = () => async (dispatch) => {
   if (window.confirm('Êtes-vous sûr ? Ça ne peut pas être annulé!  ')) {
     try {
-      const res = await axios.delete('/api/profile');
+      await axios.delete('/api/profile');
       dispatch({ type: CLEAR_PROFPROFILE });
       dispatch({ type: PROFACCOUNT_DELETED });
       dispatch(setAlert('Votre compte a été définitivement supprimé '));

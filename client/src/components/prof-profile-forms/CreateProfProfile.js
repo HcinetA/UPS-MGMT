@@ -25,7 +25,7 @@ const CreateProfProfile = ({ createprofprofile, history }) => {
         <i className='fas fa-user'></i> Obtenons quelques informations pour
         faire ressortir votre profil
       </p>
-      <small>* = required field</small>
+      <small>* = champs requis</small>
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <select name='status' value={status} onChange={(e) => onChange(e)}>
@@ -75,7 +75,7 @@ const CreateProfProfile = ({ createprofprofile, history }) => {
 
         <input type='submit' className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/pdashboard'>
-          Go Back
+          Retourner
         </Link>
       </form>
     </Fragment>
