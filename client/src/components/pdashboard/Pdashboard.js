@@ -43,7 +43,7 @@ const Pdashboard = ({
             Vous n'avez pas encore configuré de profil, veuillez ajouter
             quelques informations
           </p>
-          <Link to='/create-profprofile' className='btn btn-primary my-1'>
+          <Link to='/create-pprofile' className='btn btn-primary my-1'>
             Create Profile{' '}
           </Link>
         </Fragment>

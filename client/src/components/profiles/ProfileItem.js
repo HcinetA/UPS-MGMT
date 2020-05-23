@@ -28,7 +28,7 @@ const ProfileItem = ({
       <ul>
         {classes.slice(0, 4).map((classes, index) => (
           <li key={index} className='text-primary'>
-            <i className='fas fa-check'> {classes}</i>
+            <i className='fas fa-book-reader'> {classes}</i>
           </li>
         ))}
       </ul>

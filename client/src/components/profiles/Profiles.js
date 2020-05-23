@@ -17,10 +17,10 @@ const Profiles = ({
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large text-primary'>Prof</h1>
+          <h1 className='large text-primary'>Professeurs</h1>
           <p className='lead'>
-            <i className='fab fa-connectedevelop'></i> Brows and connect with
-            Professors
+            <i className='fab fa-connectedevelop'></i> Naviguez et
+            connectez-vous avec vos professeurs
           </p>
           <div className='profiles'>
             {profprofiles.length > 0 ? (
@@ -28,7 +28,7 @@ const Profiles = ({
                 <ProfileItem key={profprofile._id} profprofile={profprofile} />
               ))
             ) : (
-              <h4>No profiles found ...</h4>
+              <h4>Aucun profil trouvé ...</h4>
             )}
           </div>
         </Fragment>
