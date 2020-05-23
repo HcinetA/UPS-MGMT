@@ -16,7 +16,7 @@ const Pdashboard = ({
 }) => {
   useEffect(() => {
     getCurentProfProfile();
-  }, []);
+  }, [getCurentProfProfile]);
   return ploading && profprofile === null ? (
     <Spinner />
   ) : (
@@ -33,9 +33,7 @@ const Pdashboard = ({
               className='btn btn-danger'
               onClick={() => deleteProfAccount()}
             >
-              <i className className='fas fa-user-minus'>
-                Delete My Account
-              </i>
+              <i className='fas fa-user-minus'>Delete My Account</i>
             </button>
           </div>
         </Fragment>

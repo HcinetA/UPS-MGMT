@@ -15,7 +15,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurentProfile();
-  }, []);
+  }, [getCurentProfile]);
   return loading && profile === null ? (
     <Spinner />
   ) : (
@@ -30,9 +30,7 @@ const Dashboard = ({
           <DashboardActions />{' '}
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
-              <i className className='fas fa-user-minus'>
-                Delete My Account
-              </i>
+              <i className='fas fa-user-minus'>Delete My Account</i>
             </button>
           </div>
         </Fragment>
