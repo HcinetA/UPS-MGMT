@@ -7,12 +7,11 @@ import Register from './components/auth/Register';
 import LoginProf from './components/auth/LoginProf';
 import RegisterProf from './components/auth/RegisterProf';
 import Alert from './components/layout/Alert';
-//import Dashboard from './components/dashboard/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Pdashboard from './components/pdashboard/Pdashboard';
 import CreateProfProfile from './components/prof-profile-forms/CreateProfProfile';
 import EditProfProfile from './components/prof-profile-forms/EditProfProfile';
-
 import PrivateRouteP from './components/routing/PrivateRouteP';
 // Redux
 import { Provider } from 'react-redux';
@@ -61,6 +60,7 @@ const App = () => {
                 path='/edit-pprofile'
                 component={EditProfProfile}
               />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
           </section>
         </Fragment>

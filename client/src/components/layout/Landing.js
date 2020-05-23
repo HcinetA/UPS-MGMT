@@ -3,9 +3,12 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Landing = ({ pisAuthenticated }) => {
+const Landing = ({ pisAuthenticated, isAuthenticated }) => {
   if (pisAuthenticated) {
     return <Redirect to='/pdashboard' />;
+  }
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
   }
   return (
     <section className='landing'>
@@ -28,8 +31,10 @@ const Landing = ({ pisAuthenticated }) => {
 };
 Landing.propTypes = {
   pisAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
 };
 const mapStateToProps = (state) => ({
   pisAuthenticated: state.pauth.pisAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 export default connect(mapStateToProps)(Landing);
