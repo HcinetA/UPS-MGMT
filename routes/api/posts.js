@@ -34,6 +34,7 @@ router.post(
       const newPost = new Post({
         text: req.body.text,
         classes: req.body.classes,
+        document: req.body.document,
         name: prof.name,
         avatar: prof.avatar,
         prof: req.prof.id,
