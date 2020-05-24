@@ -14,12 +14,14 @@ const EditProfile = ({
     email: '',
     tel: ' ',
   });
+
   useEffect(() => {
     getCurentProfile();
     setFormData({
       email: loading || !profile.email ? '' : profile.email,
       tel: loading || !profile.tel ? '' : profile.tel,
     });
+    // eslint-disable-next-line
   }, [loading]);
   const { email, tel } = formData;
   const onChange = (e) =>

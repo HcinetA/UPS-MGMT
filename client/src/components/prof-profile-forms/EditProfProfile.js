@@ -28,6 +28,7 @@ const EditProfProfile = ({
       classes:
         ploading || !profprofile.classes ? '' : profprofile.classes.join(','),
     });
+    // eslint-disable-next-line
   }, [ploading]);
   const { email, tel, status, classes } = formData;
   const onChange = (e) =>

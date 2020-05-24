@@ -24,6 +24,8 @@ const ProfileAbout = ({
   );
 };
 
-ProfileAbout.propTypes = {};
+ProfileAbout.propTypes = {
+  profprofile: PropTypes.object.isRequired,
+};
 
 export default ProfileAbout;
