@@ -33,6 +33,7 @@ export default function (state = pinitialState, action) {
         ...state,
         error: payload,
         ploading: false,
+        profprofile: null,
       };
     case CLEAR_PROFPROFILE:
       return {

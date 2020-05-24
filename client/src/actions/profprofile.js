@@ -20,6 +20,7 @@ export const getCurentProfProfile = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
+    dispatch({ type: CLEAR_PROFPROFILE });
     dispatch({
       type: PROFPROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
