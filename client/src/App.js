@@ -16,6 +16,7 @@ import PrivateRouteP from './components/routing/PrivateRouteP';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/Profile/Profile';
+import Posts from './components/posts/Posts';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -58,6 +59,8 @@ const App = () => {
               <Route exact path='/profile/:id' component={Profile} />
 
               <PrivateRouteP exact path='/pdashboard' component={Pdashboard} />
+              <PrivateRouteP exact path='/posts' component={Posts} />
+
               <PrivateRouteP
                 exact
                 path='/create-pprofile'

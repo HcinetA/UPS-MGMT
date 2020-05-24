@@ -34,6 +34,9 @@ const Navbar = ({
   const pauthLinks = (
     <ul>
       <li>
+        <Link to='/posts'>Posts</Link>
+      </li>
+      <li>
         <Link to='/profiles'>Professeurs</Link>
       </li>
       <li>
