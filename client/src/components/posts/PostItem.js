@@ -24,17 +24,20 @@ const PostItem = ({
     date,
     classes,
   },
+  showActions,
 }) => (
   <div class='posts'>
     <div class='post bg-white p-1 my-1'>
       <div>
-        <a href={'profile.html'}>
+        <Link to={`/profile/${prof}`}>
           <img class='round-img' src={avatar} alt='' />
           <h4>{name}</h4>
-        </a>
+        </Link>
       </div>
       <div>
-        <h4>Classe: {classes}</h4>
+        <Link to={`/posts/${classes}`}>
+          <h4> {classes}</h4>
+        </Link>
         <p class='my-1'>{text}</p>
         {
           // eslint-disable-next-line
@@ -47,63 +50,69 @@ const PostItem = ({
         <p class='post-date'>
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
-        <h4>Réactions Professeurs</h4>
-        <button
-          onClick={() => addLike(_id)}
-          type='button'
-          class='btn btn-light'
-        >
-          <i class='fas fa-thumbs-up'></i>
-          <span>
-            {' '}
-            <span>
-              {likesporf.length > 0 && <span>{likesporf.length}</span>}
-            </span>
-          </span>
-        </button>
-        <button
-          onClick={(e) => removeLike(_id)}
-          type='button'
-          class='btn btn-light'
-        >
-          <i class='fas fa-thumbs-down'></i>
-        </button>
-        <Link to={`/post/${_id}`} class='btn btn-primary'>
-          Discussion{' '}
-          {commentsprof.length > 0 && (
-            <span class='comment-count'>{commentsprof.length}</span>
-          )}
-        </Link>
-        {!pauth.loading && prof === pauth.prof._id && (
-          <button
-            onClick={(e) => deletePost(_id)}
-            type='button'
-            class='btn btn-danger'
-          >
-            <i class='fas fa-times'></i>
-          </button>
-        )}
-        <div>
-          <h4>Réactions Etudiant</h4>
-          <button type='button' class='btn btn-light'>
-            <i class='fas fa-thumbs-up'></i>
-            <span> {likes.length > 0 && <span>{likes.length}</span>}</span>
-          </button>
-          <button type='button' class='btn btn-light'>
-            <i class='fas fa-thumbs-down'></i>
-          </button>
-          <Link to={`/post/${_id}`} class='btn btn-primary'>
-            Discussion{' '}
-            {comments.length > 0 && (
-              <span class='comment-count'>{comments.length}</span>
+        {showActions && (
+          <Fragment>
+            <h4>Réactions Professeurs</h4>
+            <button
+              onClick={() => addLike(_id)}
+              type='button'
+              class='btn btn-light'
+            >
+              <i class='fas fa-thumbs-up'></i>
+              <span>
+                {' '}
+                <span>
+                  {likesporf.length > 0 && <span>{likesporf.length}</span>}
+                </span>
+              </span>
+            </button>
+            <button
+              onClick={(e) => removeLike(_id)}
+              type='button'
+              class='btn btn-light'
+            >
+              <i class='fas fa-thumbs-down'></i>
+            </button>
+            <Link to={`/posts/${_id}`} class='btn btn-primary'>
+              Discussion{' '}
+              {commentsprof.length > 0 && (
+                <span class='comment-count'>{commentsprof.length}</span>
+              )}
+            </Link>
+            {!pauth.loading && prof === pauth.prof._id && (
+              <button
+                onClick={(e) => deletePost(_id)}
+                type='button'
+                class='btn btn-danger'
+              >
+                <i class='fas fa-times'></i>
+              </button>
             )}
-          </Link>
-        </div>
+            <div>
+              <h4>Réactions Etudiant</h4>
+              <button type='button' class='btn btn-light'>
+                <i class='fas fa-thumbs-up'></i>
+                <span> {likes.length > 0 && <span>{likes.length}</span>}</span>
+              </button>
+              <button type='button' class='btn btn-light'>
+                <i class='fas fa-thumbs-down'></i>
+              </button>
+              <Link to={`/posts/${_id}`} class='btn btn-primary'>
+                Discussion{' '}
+                {comments.length > 0 && (
+                  <span class='comment-count'>{comments.length}</span>
+                )}
+              </Link>
+            </div>
+          </Fragment>
+        )}
       </div>
     </div>
   </div>
 );
-
+PostItem.defaultProps = {
+  showActions: true,
+};
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   pauth: PropTypes.object.isRequired,
