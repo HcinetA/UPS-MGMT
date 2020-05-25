@@ -9,6 +9,7 @@ const Profile = require('../../models/Profile');
 const Prof = require('../../models/Prof');
 const Uprofile = require('../../models/Uprofile');
 const User = require('../../models/User');
+const checkObjectId = require('../../middleware/checkObjectId');
 
 //@router Post api/posts
 //@desc create a post
@@ -162,26 +163,26 @@ router.put('/like/:id', auth, async (req, res) => {
     res.status(500).send('server error');
   }
 });
-//@router put  api/posts/like/:id
-//@desc like a post
-//@ access private
-router.put('/like/p/:id', pauth, async (req, res) => {
+// @route    PUT api/posts/like/:id
+// @desc     Like a post
+// @access   Private
+router.put('/like/p/:id', [pauth, checkObjectId('id')], async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
-    if (
-      post.likesporf.filter((like) => like.prof.toString() === req.prof.id)
-        .length > 0
-    ) {
+    // Check if the post has already been liked
+    if (post.likesporf.some((like) => like.prof.toString() === req.prof.id)) {
       return res.status(400).json({ msg: 'Post already liked' });
     }
+
     post.likesporf.unshift({ prof: req.prof.id });
 
     await post.save();
-    res.json(post.likesporf);
+
+    return res.json(post.likesporf);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('server error');
+    res.status(500).send('Server Error');
   }
 });
 //@router put  api/posts/unlike/:id
@@ -213,7 +214,7 @@ router.put('/unlike/:id', auth, async (req, res) => {
 //@router put  api/posts/unlike/p/:id
 //@desc like a post
 //@ access private
-router.put('/unlike/p/:id', pauth, async (req, res) => {
+router.put('/unlike/p/:id', [pauth, checkObjectId('id')], async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
