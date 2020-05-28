@@ -16,6 +16,9 @@ const Navbar = ({
         <Link to='/profiles'>Professeurs</Link>
       </li>
       <li>
+        <Link to='/uprofiles'>Etudiants</Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />
 
@@ -40,6 +43,9 @@ const Navbar = ({
         <Link to='/profiles'>Professeurs</Link>
       </li>
       <li>
+        <Link to='/uprofiles'>Etudiants</Link>
+      </li>
+      <li>
         <Link to='/pdashboard'>
           <i className='fas fa-user' />
 
@@ -60,6 +66,9 @@ const Navbar = ({
     <ul>
       <li>
         <Link to='/profiles'>Professeurs</Link>
+      </li>
+      <li>
+        <Link to='/uprofiles'>Etudiants</Link>
       </li>
 
       <li>

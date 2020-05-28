@@ -18,6 +18,8 @@ import Profiles from './components/profiles/Profiles';
 import Profile from './components/Profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
+import UProfiles from './components/uprofiles/UProfiles';
+import UProfile from './components/uprofile/Uprofile';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -58,6 +60,8 @@ const App = () => {
               <Route exact path='/loginprof' component={LoginProf} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/profile/:id' component={Profile} />
+              <Route exact path='/uprofiles' component={UProfiles} />
+              <Route exact path='/uprofile/:id' component={UProfile} />
 
               <PrivateRouteP exact path='/pdashboard' component={Pdashboard} />
               <PrivateRouteP exact path='/posts' component={Posts} />
