@@ -19,6 +19,9 @@ const Navbar = ({
         <Link to='/uprofiles'>Etudiants</Link>
       </li>
       <li>
+        <Link to='/uposts'>Posts</Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />
 

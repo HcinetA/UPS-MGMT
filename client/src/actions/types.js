@@ -33,3 +33,7 @@ export const ADD_POST = 'ADD_POST';
 export const GET_POST1 = 'GET_POST1';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const GET_UPOSTS = 'GET_UPOSTS';
+export const UPOST_ERROR = 'UPOST_ERROR';
+export const UPDATE_ULIKES = 'UPDATE_ULIKES';
+export const GET_UPOST = 'GET_UPOST';

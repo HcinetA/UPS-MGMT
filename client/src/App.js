@@ -20,7 +20,9 @@ import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import UProfiles from './components/uprofiles/UProfiles';
 import UProfile from './components/uprofile/Uprofile';
-
+import UPosts from './components/Uposts/UPosts';
+import EditProfile from './components/profile-forms/EditProfile';
+import Upost from './components/upost/Upost';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -30,7 +32,6 @@ import { loadProf } from './actions/pauth';
 import './App.css';
 import setAuthToken from './utils/setAuthToken';
 import setPauthToken from './utils/setPauthToken';
-import EditProfile from './components/profile-forms/EditProfile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -66,7 +67,7 @@ const App = () => {
               <PrivateRouteP exact path='/pdashboard' component={Pdashboard} />
               <PrivateRouteP exact path='/posts' component={Posts} />
               <PrivateRouteP exact path='/posts/:id' component={Post} />
-
+              <PrivateRoute exact path='/uposts' component={UPosts} />
               <PrivateRouteP
                 exact
                 path='/create-pprofile'
@@ -88,6 +89,7 @@ const App = () => {
                 path='/edit-profile'
                 component={EditProfile}
               />
+              <PrivateRoute exact path='/uposts/:id' component={Upost} />
             </Switch>
           </section>
         </Fragment>
