@@ -5,7 +5,7 @@ import Spinner from '../layout/Spinner';
 import PostItem from '../posts/PostItem';
 import CommentForm from '../post/CommentForm';
 import CommentItem from '../post/CommentItem';
-
+import UCommentItem from './UCommentItem';
 import { getPost } from '../../actions/post';
 import { Link } from 'react-router-dom';
 const Post = ({ getPost, post: { post, loading }, match }) => {
@@ -29,6 +29,15 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
           <CommentItem
             key={commentsprof._id}
             commentsprof={commentsprof}
+            postId={post._id}
+          />
+        ))}
+      </div>
+      <div className='comments'>
+        {post.comments.map((comments) => (
+          <UCommentItem
+            key={comments._id}
+            comments={comments}
             postId={post._id}
           />
         ))}

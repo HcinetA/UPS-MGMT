@@ -63,12 +63,6 @@ const UPostItem = ({
             <button type='button' class='btn btn-light'>
               <i class='fas fa-thumbs-down'></i>
             </button>
-            <Link to={`/uposts/${_id}`} class='btn btn-primary'>
-              Discussion{' '}
-              {commentsprof.length > 0 && (
-                <span class='comment-count'>{commentsprof.length}</span>
-              )}
-            </Link>
             <div>
               <h4>Réactions Etudiant</h4>
               <button

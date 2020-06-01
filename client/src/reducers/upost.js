@@ -3,6 +3,8 @@ import {
   UPOST_ERROR,
   UPDATE_ULIKES,
   GET_UPOST,
+  ADD_UCOMMENT,
+  REMOVE_UCOMMENT,
 } from '../actions/types';
 const initialState = {
   posts: [],
@@ -37,6 +39,23 @@ export default function (state = initialState, action) {
         posts: state.posts.map((upost) =>
           upost.id === payload.id ? { ...upost, likes: payload.likes } : upost
         ),
+        loading: false,
+      };
+    case ADD_UCOMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+        loading: false,
+      };
+    case REMOVE_UCOMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            (comment) => comment._id !== payload
+          ),
+        },
         loading: false,
       };
     default:

@@ -37,3 +37,5 @@ export const GET_UPOSTS = 'GET_UPOSTS';
 export const UPOST_ERROR = 'UPOST_ERROR';
 export const UPDATE_ULIKES = 'UPDATE_ULIKES';
 export const GET_UPOST = 'GET_UPOST';
+export const ADD_UCOMMENT = 'ADD_UCOMMENT';
+export const REMOVE_UCOMMENT = 'REMOVE_UCOMMENT';

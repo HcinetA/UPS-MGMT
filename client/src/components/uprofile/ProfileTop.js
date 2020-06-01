@@ -5,7 +5,7 @@ const ProfileTop = ({
   profile: {
     email,
     tel,
-    user: { name, avatar },
+    user: { name, avatar, classe },
   },
 }) => {
   return (
@@ -14,6 +14,7 @@ const ProfileTop = ({
       <h1 class='large'>{name}</h1>
       <p class='lead'>{email}</p>
       <p class='lead'>{tel}</p>
+      <p class='lead'>{classe}</p>
     </div>
   );
 };

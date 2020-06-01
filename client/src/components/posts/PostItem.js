@@ -97,12 +97,6 @@ const PostItem = ({
               <button type='button' class='btn btn-light'>
                 <i class='fas fa-thumbs-down'></i>
               </button>
-              <Link to={`/posts/${_id}`} class='btn btn-primary'>
-                Discussion{' '}
-                {comments.length > 0 && (
-                  <span class='comment-count'>{comments.length}</span>
-                )}
-              </Link>
             </div>
           </Fragment>
         )}
