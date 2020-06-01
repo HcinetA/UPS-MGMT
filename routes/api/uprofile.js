@@ -87,6 +87,7 @@ router.get('/', async (req, res) => {
     const uprofiles = await Uprofile.find().populate('user', [
       'name',
       'avatar',
+      'classe',
     ]);
     res.json(uprofiles);
   } catch (err) {
@@ -102,7 +103,7 @@ router.get('/user/:user_id', async (req, res) => {
   try {
     const uprofile = await Uprofile.findOne({
       user: req.params.user_id,
-    }).populate('user', ['name', 'avatar']);
+    }).populate('user', ['name', 'avatar', 'classe']);
     if (!uprofile) return res.status(400).json({ msg: 'Profile Not found' });
 
     res.json(uprofile);
