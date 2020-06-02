@@ -39,7 +39,12 @@ const UPostItem = ({
       {
         // eslint-disable-next-line
         !document == 0 && (
-          <a href={document} class='btn btn-primary'>
+          <a
+            href={document}
+            target='_blank'
+            rel='noopener noreferrer'
+            class='btn btn-primary'
+          >
             Document{' '}
           </a>
         )
@@ -51,18 +56,13 @@ const UPostItem = ({
         {ShowActions && (
           <Fragment>
             <h4>Réactions Professeurs</h4>
-            <button type='button' class='btn btn-light'>
-              <i class='fas fa-thumbs-up'></i>
+            <i class='fas fa-thumbs-up'></i>
+            <span>
+              {' '}
               <span>
-                {' '}
-                <span>
-                  {likesporf.length > 0 && <span>{likesporf.length}</span>}
-                </span>
+                {likesporf.length > 0 && <span>{likesporf.length}</span>}
               </span>
-            </button>
-            <button type='button' class='btn btn-light'>
-              <i class='fas fa-thumbs-down'></i>
-            </button>
+            </span>
             <div>
               <h4>Réactions Etudiant</h4>
               <button
