@@ -86,7 +86,7 @@ const Navbar = ({
     <nav className='navbar bg-dark'>
       <h1>
         <Link to='/'>
-          <i className='fas fa-university'></i> Intranet Ups
+          <i className='fas fa-university'></i> Intranet UPS
         </Link>
       </h1>
       {!loading && !ploading && (

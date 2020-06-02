@@ -14,7 +14,7 @@ const Landing = ({ pisAuthenticated, isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Intranet Ups</h1>
+          <h1 className='x-large'>Intranet UPS</h1>
           <p className='lead'>Cours, Emploi Du temps, Rattrapage et Plus</p>
           <div className='buttons'>
             <Link to='login' className='btn btn-primary'>
