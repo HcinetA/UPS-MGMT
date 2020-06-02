@@ -7,6 +7,7 @@ import {
   GET_UPOST,
   ADD_UCOMMENT,
   REMOVE_UCOMMENT,
+  GET_UPOSTClASSE,
 } from './types';
 
 //GET POSTS
@@ -67,6 +68,23 @@ export const getUpost = (id) => async (dispatch) => {
     const res = await axios.get(`/api/posts/${id}`);
     dispatch({
       type: GET_UPOST,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: UPOST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// get post by classe
+
+export const getUpostClasse = (classes) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/c/${classes}`);
+    dispatch({
+      type: GET_UPOSTClASSE,
       payload: res.data,
     });
   } catch (err) {

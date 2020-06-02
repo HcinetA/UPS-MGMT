@@ -14,7 +14,7 @@ router.get('/me', auth, async (req, res) => {
     const uprofile = await Uprofile.findOne({ user: req.user.id }).populate(
       'user',
 
-      ['name', 'avatar']
+      ['name', 'avatar', 'classe']
     );
 
     if (!uprofile) {

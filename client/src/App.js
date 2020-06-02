@@ -21,6 +21,7 @@ import Post from './components/post/Post';
 import UProfiles from './components/uprofiles/UProfiles';
 import UProfile from './components/uprofile/Uprofile';
 import UPosts from './components/Uposts/UPosts';
+import UpostsClasse from './components/Uposts/UpostsClasse';
 import EditProfile from './components/profile-forms/EditProfile';
 import Upost from './components/upost/Upost';
 // Redux
@@ -90,6 +91,7 @@ const App = () => {
                 component={EditProfile}
               />
               <PrivateRoute exact path='/uposts/:id' component={Upost} />
+              <Route exact path='/uposts/c/:classe' component={UpostsClasse} />
             </Switch>
           </section>
         </Fragment>

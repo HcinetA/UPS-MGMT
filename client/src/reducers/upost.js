@@ -5,6 +5,7 @@ import {
   GET_UPOST,
   ADD_UCOMMENT,
   REMOVE_UCOMMENT,
+  GET_UPOSTClASSE,
 } from '../actions/types';
 const initialState = {
   posts: [],
@@ -25,6 +26,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         post: payload,
+        loading: false,
+      };
+    case GET_UPOSTClASSE:
+      return {
+        ...state,
+        posts: payload,
         loading: false,
       };
     case UPOST_ERROR:

@@ -113,22 +113,7 @@ router.get('/c/:classes', auth, async (req, res) => {
     res.status(500).send('server error');
   }
 });
-//@router get api/posts/c/:classe
-//@desc get post by classe name
-//@ access Private
 
-router.get('/c/:classes', pauth, async (req, res) => {
-  try {
-    const post = await Post.find({ classes: req.params.classes });
-    if (!post) {
-      return res.status(404).json({ msg: 'Post not found' });
-    }
-    res.json(post);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('server error');
-  }
-});
 //@router get api/post/:id
 //@desc get post by id
 //@ access Private

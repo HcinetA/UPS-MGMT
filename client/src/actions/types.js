@@ -39,3 +39,4 @@ export const UPDATE_ULIKES = 'UPDATE_ULIKES';
 export const GET_UPOST = 'GET_UPOST';
 export const ADD_UCOMMENT = 'ADD_UCOMMENT';
 export const REMOVE_UCOMMENT = 'REMOVE_UCOMMENT';
+export const GET_UPOSTClASSE = 'GET_UPOSTClASSE';

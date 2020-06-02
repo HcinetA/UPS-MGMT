@@ -6,7 +6,6 @@ const ProfileItem = ({
   profile: {
     user: { _id, name, avatar },
     email,
-    tel,
   },
 }) => {
   return (
@@ -15,7 +14,7 @@ const ProfileItem = ({
       <div>
         <h2>{name}</h2>
         <p className='my-'>{email}</p>
-        <p className='my-'>{tel}</p>
+
         <Link to={`/uprofile/${_id}`} className='btn btn-primary'>
           Voir Profile
         </Link>
