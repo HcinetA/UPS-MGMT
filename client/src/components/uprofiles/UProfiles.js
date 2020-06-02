@@ -30,7 +30,7 @@ const UProfiles = ({ getProfiles, profile: { profiles, loading } }) => {
                 <ProfileItem key={profile.id} profile={profile} />
               ))
             ) : (
-              <h4> No profiles found </h4>
+              <h4> Aucun profil trouvé</h4>
             )}
           </div>
         </Fragment>

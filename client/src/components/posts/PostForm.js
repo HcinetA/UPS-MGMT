@@ -24,7 +24,7 @@ const PostForm = ({ addPost }) => {
   return (
     <div class='post-form' onSubmit={(e) => onSubmit(e)}>
       <div class='bg-primary p'>
-        <h3>Say Something...</h3>
+        <h3>Dis quelquechose...</h3>
       </div>
       <form class='form my-1'>
         <textarea

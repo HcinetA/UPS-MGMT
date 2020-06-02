@@ -32,7 +32,7 @@ const UPostItem = ({
       </Link>
     </div>
     <div>
-      <Link to={`/posts/${classes}`}>
+      <Link to={`/uposts/c/${classes}`}>
         <h4> {classes}</h4>
       </Link>
       <p class='my-1'>{text}</p>
@@ -50,7 +50,7 @@ const UPostItem = ({
         )
       }
       <p class='post-date'>
-        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+        Posté le <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
       <Fragment>
         {ShowActions && (

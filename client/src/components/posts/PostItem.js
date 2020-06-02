@@ -35,9 +35,7 @@ const PostItem = ({
         </Link>
       </div>
       <div>
-        <Link to={`/posts/${classes}`}>
-          <h4> {classes}</h4>
-        </Link>
+        <h4> {classes}</h4>
         <p class='my-1'>{text}</p>
         {
           // eslint-disable-next-line
@@ -53,7 +51,7 @@ const PostItem = ({
           )
         }
         <p class='post-date'>
-          Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+          Posté le <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
         {showActions && (
           <Fragment>

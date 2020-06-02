@@ -13,14 +13,14 @@ const UPosts = ({ getUposts, upost: { posts, loading }, auth }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <Link to={`/uposts/c/${auth.user.classe}`} class='btn btn-primary'>
-        {' '}
-        Myposts
-      </Link>
       <h1 className='large text-primary'> Posts</h1>
       <p className='lead'>
         <i className='fas fa-user'> Bienvenue</i>
       </p>
+      <Link to={`/uposts/c/${auth.user.classe}`} class='btn btn-primary'>
+        {' '}
+        Mes Posts de classe
+      </Link>
       <div className='posts'>
         {posts.map((upost) => (
           <UPostItem key={upost._id} upost={upost} />

@@ -75,10 +75,10 @@ const Navbar = ({
       </li>
 
       <li>
-        <Link to='register'>Register Étudiant </Link>
+        <Link to='register'>Inscription Étudiant </Link>
       </li>
       <li>
-        <Link to='registerprof'>Register Professeurs</Link>
+        <Link to='registerprof'>Inscription Professeurs</Link>
       </li>
     </ul>
   );

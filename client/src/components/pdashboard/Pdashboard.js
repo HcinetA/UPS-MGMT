@@ -33,7 +33,7 @@ const Pdashboard = ({
               className='btn btn-danger'
               onClick={() => deleteProfAccount()}
             >
-              <i className='fas fa-user-minus'>Delete My Account</i>
+              <i className='fas fa-user-minus'>Supprimer mon compte</i>
             </button>
           </div>
         </Fragment>
@@ -44,7 +44,7 @@ const Pdashboard = ({
             quelques informations
           </p>
           <Link to='/create-pprofile' className='btn btn-primary my-1'>
-            Create Profile{' '}
+            Créer un profil{' '}
           </Link>
         </Fragment>
       )}

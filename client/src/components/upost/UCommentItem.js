@@ -22,7 +22,7 @@ const UCommentItem = ({
         <div>
           <p class='my-1'>{text}</p>
           <p class='post-date'>
-            Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+            Posté le <Moment format='YYYY/MM/DD'>{date}</Moment>
           </p>
           {!auth.loading && user === auth.user._id && (
             <button

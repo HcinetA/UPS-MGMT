@@ -22,14 +22,14 @@ const Uprofile = ({
       ) : (
         <Fragment>
           <Link to='/uprofiles' className='btn btn-light'>
-            Back to profiles
+            Retour aux profils
           </Link>
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
               <Link to='/edit-profile' className='btn btn-dark'>
                 {' '}
-                Edit profile
+                Editer le profil
               </Link>
             )}
           <div class='profile-grid my-1'>
