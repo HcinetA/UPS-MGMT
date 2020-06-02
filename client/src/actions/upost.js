@@ -29,12 +29,12 @@ export const getUposts = () => async (dispatch) => {
 
 //add LIKE
 
-export const addUlike = (postId) => async (dispatch) => {
+export const addUlike = (id) => async (dispatch) => {
   try {
-    const res = await axios.put(`api/posts/like/${postId}`);
+    const res = await axios.put(`api/posts/like/${id}`);
     dispatch({
       type: UPDATE_ULIKES,
-      payload: { postId, likes: res.data },
+      payload: { id, likes: res.data },
     });
   } catch (err) {
     dispatch({
@@ -46,12 +46,12 @@ export const addUlike = (postId) => async (dispatch) => {
 
 //remove LIKE
 
-export const removeUlike = (postId) => async (dispatch) => {
+export const removeUlike = (id) => async (dispatch) => {
   try {
-    const res = await axios.put(`api/posts/unlike/${postId}`);
+    const res = await axios.put(`api/posts/unlike/${id}`);
     dispatch({
       type: UPDATE_ULIKES,
-      payload: { postId, likes: res.data },
+      payload: { id, likes: res.data },
     });
   } catch (err) {
     dispatch({
