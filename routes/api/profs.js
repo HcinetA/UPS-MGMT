@@ -14,13 +14,13 @@ const Prof = require('../../models/Prof');
 router.post(
   '/',
   [
-    check('name', 'Name is required').not().isEmpty(),
-    check('SN', 'please include a valid SN')
+    check('name', 'Le nom est requis').not().isEmpty(),
+    check('SN', 'Veuillez inclure un numéro secret valide')
       .isLength({ min: 7 })
       .contains('SN'),
     check(
       'password',
-      'please enter a password with 6 or more characters'
+      'Veuillez entrer un mot de passe avec 6 caractères ou plus '
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
@@ -33,9 +33,7 @@ router.post(
     try {
       let prof = await Prof.findOne({ SN });
       if (prof) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'Prof already exists' }] });
+        return res.status(400).json({ errors: [{ msg: 'Prof existe déjà' }] });
       }
 
       const avatar = gravatar.url(SN, {

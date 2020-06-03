@@ -14,15 +14,15 @@ const User = require('../../models/User');
 router.post(
   '/',
   [
-    check('name', 'Name is required').not().isEmpty(),
-    check('NI', 'please include a valid Ni')
+    check('name', 'Nom est requis').not().isEmpty(),
+    check('NI', 'Veuillez inclure un numéro inscription valide')
       .isLength({ min: 7 })
       .contains('SE'),
     check(
       'password',
-      'please enter a password with 6 or more characters'
+      'Veuillez entrer un mot de passe avec 6 caractères ou plus'
     ).isLength({ min: 6 }),
-    check('classe', 'classe is required').not().isEmpty(),
+    check('classe', 'Classe est requis').not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -36,7 +36,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'user already exists' }] });
+          .json({ errors: [{ msg: 'Utilisateur existe déjà' }] });
       }
 
       const avatar = gravatar.url(NI, {

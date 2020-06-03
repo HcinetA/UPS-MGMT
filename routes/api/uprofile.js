@@ -18,7 +18,9 @@ router.get('/me', auth, async (req, res) => {
     );
 
     if (!uprofile) {
-      return res.status(400).json({ msg: 'there is no profile for this user' });
+      return res
+        .status(400)
+        .json({ msg: 'Pas de profil pour cet utilisateur' });
     }
 
     res.json(uprofile);
@@ -37,8 +39,8 @@ router.post(
   [
     auth,
     [
-      check('email', 'status is required').not().isEmpty(),
-      check('tel', 'classes is required').not().isEmpty(),
+      check('email', 'E-mail est requis').not().isEmpty(),
+      check('tel', 'tel est requis').not().isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -104,13 +106,13 @@ router.get('/user/:user_id', async (req, res) => {
     const uprofile = await Uprofile.findOne({
       user: req.params.user_id,
     }).populate('user', ['name', 'avatar', 'classe']);
-    if (!uprofile) return res.status(400).json({ msg: 'Profile Not found' });
+    if (!uprofile) return res.status(400).json({ msg: 'Profil non trouvé' });
 
     res.json(uprofile);
   } catch (err) {
     console.error(err.message);
     if ((err.kind = 'ObjectId')) {
-      return res.status(400).json({ msg: 'Profile Not Found' });
+      return res.status(400).json({ msg: 'Profil non trouvé' });
     }
     res.status(500).send('server error');
   }
@@ -127,7 +129,7 @@ router.delete('/', auth, async (req, res) => {
     //remove prof
     await User.findOneAndRemove({ _id: req.user.id });
 
-    res.json({ msg: 'User deleted' });
+    res.json({ msg: 'Utilisateur supprimé' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('server error');

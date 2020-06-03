@@ -20,8 +20,8 @@ router.post(
   [
     pauth,
     [
-      check('text', 'Text is required').not().isEmpty(),
-      check('classes', 'Class is required').not().isEmpty(),
+      check('text', 'Texte est requis').not().isEmpty(),
+      check('classes', 'Classe est requis').not().isEmpty(),
     ],
   ],
 
@@ -170,7 +170,7 @@ router.put('/like/:id', auth, async (req, res) => {
       post.likes.filter((like) => like.user.toString() === req.user.id).length >
       0
     ) {
-      return res.status(400).json({ msg: 'Post already liked' });
+      return res.status(400).json({ msg: 'Post déjà aimé      ' });
     }
     post.likes.unshift({ user: req.user.id });
 
@@ -190,7 +190,7 @@ router.put('/like/p/:id', [pauth, checkObjectId('id')], async (req, res) => {
 
     // Check if the post has already been liked
     if (post.likesporf.some((like) => like.prof.toString() === req.prof.id)) {
-      return res.status(400).json({ msg: 'Post already liked' });
+      return res.status(400).json({ msg: 'Post déjà aimé' });
     }
 
     post.likesporf.unshift({ prof: req.prof.id });
@@ -214,7 +214,7 @@ router.put('/unlike/:id', auth, async (req, res) => {
       post.likes.filter((like) => like.user.toString() === req.user.id)
         .length === 0
     ) {
-      return res.status(400).json({ msg: 'Post has not yet been liked' });
+      return res.status(400).json({ msg: 'Post pas encore été aimé ' });
     }
     // get remove index
     const removeIndex = post.likes
@@ -240,7 +240,7 @@ router.put('/unlike/p/:id', [pauth, checkObjectId('id')], async (req, res) => {
       post.likesporf.filter((like) => like.prof.toString() === req.prof.id)
         .length === 0
     ) {
-      return res.status(400).json({ msg: 'Post has not yet been liked' });
+      return res.status(400).json({ msg: 'Post pas encore été aimé ' });
     }
     // get remove index
     const removeIndex = post.likesporf
@@ -261,7 +261,7 @@ router.put('/unlike/p/:id', [pauth, checkObjectId('id')], async (req, res) => {
 
 router.post(
   '/comment/:id',
-  [auth, [check('text', 'Text is required').not().isEmpty()]],
+  [auth, [check('text', 'Texte est requis').not().isEmpty()]],
 
   async (req, res) => {
     const errors = validationResult(req);
@@ -292,7 +292,7 @@ router.post(
 
 router.post(
   '/comment/p/:id',
-  [pauth, [check('text', 'Text is required').not().isEmpty()]],
+  [pauth, [check('text', 'Texte est requis').not().isEmpty()]],
 
   async (req, res) => {
     const errors = validationResult(req);
@@ -333,11 +333,11 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 
     //make sure comment exists
     if (!comment) {
-      return res.status(404).json({ msg: 'Comment does not exist' });
+      return res.status(404).json({ msg: 'Commentaire inexistant' });
     }
     // Check user
     if (comment.user.toString() !== req.user.id) {
-      return res.status(404).json({ msg: 'yser not authorized' });
+      return res.status(404).json({ msg: 'user not authorized' });
     }
     // get remove index
     const removeIndex = post.comments
@@ -367,7 +367,7 @@ router.delete('/comment/p/:id/:comment_id', pauth, async (req, res) => {
 
     //make sure comment exists
     if (!comment) {
-      return res.status(404).json({ msg: 'Comment does not exist' });
+      return res.status(404).json({ msg: 'Commentaire inexistant' });
     }
     // Check user
     if (comment.prof.toString() !== req.prof.id) {

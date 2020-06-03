@@ -27,8 +27,8 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
-    check('NI', 'Please include a valid NI').exists(),
-    check('password', 'Password is required').exists(),
+    check('NI', 'Veuillez inclure un numéro inscription valide').exists(),
+    check('password', 'Mot de passe requis    ').exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -44,7 +44,9 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+          .json({
+            errors: [{ msg: 'Les informations identification invalides' }],
+          });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -52,7 +54,9 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+          .json({
+            errors: [{ msg: 'Les informations identification invalides' }],
+          });
       }
 
       const payload = {
